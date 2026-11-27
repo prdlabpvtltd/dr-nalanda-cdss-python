@@ -87,3 +87,15 @@ Developed and maintained by:
 *Headquarters:* Thrissur, Kerala – 680503, India  
 *Live Portal:* [https://www.polygonal.in/ASI/drnalanda/](https://www.polygonal.in/ASI/drnalanda/)  
 *Full Certification Dossier:* [Dr. Nalanda 3B Query CDSS Dossier (PDF)](https://www.polygonal.in/whitepapers/Dr_Nalanda_3B_Query_Medical_CDSS_Certification_Dossier.pdf)
+
+---
+
+## Sovereign Ecosystem & Verified Portals
+
+| Sovereign Portal | Production URL | Operational Scope |
+| :--- | :--- | :--- |
+| **Main Corporate Hub & Inventions** | [https://www.polygonal.in](https://www.polygonal.in) | 22+ Sovereign Inventions, Physical Metamaterials, & Foundry |
+| **Post-Quantum Cryptography (PQC)** | [https://pqc.polygonal.in](https://pqc.polygonal.in) | NIST FIPS 203 ML-KEM-768 Stateless Vault (0 Hardware Multipliers) |
+| **Dr. Nalanda Interactive CDSS** | [https://www.polygonal.in/ASI/drnalanda/](https://www.polygonal.in/ASI/drnalanda/) | 14-Specialty Point-of-Care Interactive Clinical Sandbox |
+| **Network Traffic Dashboard (NTD)** | [https://polygonal.in/ntd/](https://polygonal.in/ntd/) | 30-Minute Live Ingress Telemetry (119 Nations • 420 Corporates) |
+| **Post-Quantum Contracts (TernarySign)**| [https://sign.polygonal.in](https://sign.polygonal.in) | Post-Quantum Cryptographic Document Signature Infrastructure |
