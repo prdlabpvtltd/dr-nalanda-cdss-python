@@ -1,70 +1,24 @@
-import json
-import urllib.request
-import urllib.error
-from typing import Dict, Any, Optional
-
-from .models import PatientCase, ClinicalResolution
-from .exceptions import APIConnectionError, DisclaimerRequiredError, DrNalandaError
-
-DEFAULT_BASE_URL = "https://www.polygonal.in/api/drnalanda"
-
+_D=b'RHJOYWxhbmRhLVB5dGhvblNESy8wLjEuMA=='
+_C=b'VXNlci1BZ2VudA=='
+_B='utf-8'
+_A='base64'
+import json,urllib.request,urllib.error
+from typing import Dict,Any,Optional
+from.models import PatientCase,ClinicalResolution
+from.exceptions import APIConnectionError,DisclaimerRequiredError,DrNalandaError
+DEFAULT_BASE_URL=__import__(_A).b64decode(b'aHR0cHM6Ly93d3cucG9seWdvbmFsLmluL2FwaS9kcm5hbGFuZGE=').decode()
 class DrNalandaClient:
-    """
-    Official Python Client for Dr. Nalanda, MD (Clinical Decision Support System).
-    Powered by the TernaryAI MoE Deterministic Engine.
-    """
-    def __init__(self, base_url: str = DEFAULT_BASE_URL, timeout: int = 10):
-        self.base_url = base_url.rstrip("/")
-        self.timeout = timeout
-
-    def check_health(self) -> Dict[str, Any]:
-        """Verify API operational health."""
-        url = f"{self.base_url}/health"
-        req = urllib.request.Request(url, headers={"User-Agent": "DrNalanda-PythonSDK/0.1.0"})
-        try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except Exception as e:
-            raise APIConnectionError(f"Health check failed for {url}: {e}")
-
-    def resolve(self, patient: PatientCase) -> ClinicalResolution:
-        """
-        Execute deterministic clinical decision resolution for the given patient case.
-        Evaluates 14 accredited clinical specialty invariants with zero hallucination drift.
-        """
-        if not patient.bypass_disclaimer_confirmed:
-            raise DisclaimerRequiredError("Mandatory statutory disclaimer must be confirmed.")
-
-        url = f"{self.base_url}/resolve"
-        payload = json.dumps(patient.to_dict()).encode("utf-8")
-        req = urllib.request.Request(
-            url,
-            data=payload,
-            headers={
-                "Content-Type": "application/json",
-                "User-Agent": "DrNalanda-PythonSDK/0.1.0"
-            },
-            method="POST"
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            body = e.read().decode("utf-8", errors="ignore")
-            raise DrNalandaError(f"HTTP {e.code} Error: {body}")
-        except Exception as e:
-            raise APIConnectionError(f"Failed to communicate with Dr. Nalanda API: {e}")
-
-        return ClinicalResolution(
-            status=data.get("status", "unknown"),
-            latency_ms=data.get("latency_ms", 0.0),
-            tier0_emergency=data.get("tier0_emergency", False),
-            emergency_alerts=data.get("emergency_alerts", []),
-            findings_count=data.get("findings_count", 0),
-            hazards_count=data.get("hazards_count", 0),
-            red_flags_count=data.get("red_flags_count", 0),
-            doctor_persona=data.get("doctor_persona", ""),
-            statutory_citations=data.get("statutory_citations", []),
-            markdown_report=data.get("markdown_report", ""),
-            raw_response=data
-        )
+	def __init__(self,base_url=DEFAULT_BASE_URL,timeout=10):self.base_url=base_url.rstrip('/');self.timeout=timeout
+	def check_health(self):
+		A=f"{self.base_url}/health";B=urllib.request.Request(A,headers={__import__(_A).b64decode(_C).decode():__import__(_A).b64decode(_D).decode()})
+		try:
+			with urllib.request.urlopen(B,timeout=self.timeout)as C:return json.loads(C.read().decode(_B))
+		except Exception as D:raise APIConnectionError(f"Health check failed for {A}: {D}")
+	def resolve(self,patient):
+		if not patient.bypass_disclaimer_confirmed:raise DisclaimerRequiredError('Mandatory statutory disclaimer must be confirmed.')
+		C=f"{self.base_url}/resolve";D=json.dumps(patient.to_dict()).encode(_B);E=urllib.request.Request(C,data=D,headers={__import__(_A).b64decode(b'Q29udGVudC1UeXBl').decode():__import__(_A).b64decode(b'YXBwbGljYXRpb24vanNvbg==').decode(),__import__(_A).b64decode(_C).decode():__import__(_A).b64decode(_D).decode()},method='POST')
+		try:
+			with urllib.request.urlopen(E,timeout=self.timeout)as F:A=json.loads(F.read().decode(_B))
+		except urllib.error.HTTPError as B:G=B.read().decode(_B,errors='ignore');raise DrNalandaError(f"HTTP {B.code} Error: {G}")
+		except Exception as B:raise APIConnectionError(f"Failed to communicate with Dr. Nalanda API: {B}")
+		return ClinicalResolution(status=A.get('status','unknown'),latency_ms=A.get('latency_ms',.0),tier0_emergency=A.get('tier0_emergency',False),emergency_alerts=A.get('emergency_alerts',[]),findings_count=A.get('findings_count',0),hazards_count=A.get('hazards_count',0),red_flags_count=A.get('red_flags_count',0),doctor_persona=A.get('doctor_persona',''),statutory_citations=A.get('statutory_citations',[]),markdown_report=A.get('markdown_report',''),raw_response=A)
