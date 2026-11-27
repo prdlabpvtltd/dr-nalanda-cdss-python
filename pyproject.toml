@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dr-nalanda-cdss"
+version = "0.1.0"
+authors = [
+  { name="Polygonal Research and Development Lab Private Limited", email="deepak.singh@polygonal.in" },
+]
+description = "Official Python SDK for Dr. Nalanda, MD — Deterministic Medical CDSS"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+
+[project.urls]
+"Homepage" = "https://www.polygonal.in/ASI/drnalanda/"
+"Certification Dossier" = "https://www.polygonal.in/whitepapers/Dr_Nalanda_3B_Query_Medical_CDSS_Certification_Dossier.pdf"
+"Repository" = "https://github.com/prdlabpvtltd/dr-nalanda-cdss-python"
